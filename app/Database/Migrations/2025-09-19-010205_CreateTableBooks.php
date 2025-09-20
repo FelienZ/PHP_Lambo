@@ -19,27 +19,28 @@ class CreateTableBooks extends Migration
                 'TYPE' => "TEXT",
                 'null' => false
             ],
-            'author' => [
+            'image_url' => [
                 'TYPE' => "TEXT",
                 'null' => false
             ],
-            'year' => [
-                'TYPE' => "INT",
+            'url' => [
+                'TYPE' => "TEXT",
                 'null' => false
             ],
             'status' => [
                 'TYPE' => "ENUM",
-                'constraint' => ['available', 'not_available'],
-                'default' => 'available'
+                'constraint' => ['Done', 'On Progress'],
+                'default' => 'On Progress'
             ],
+            'created_at DATETIME DEFAULT CURRENT_TIMESTAMP'
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('books');
+        $this->forge->createTable('projects');
     }
 
     public function down()
     {
         //
-        $this->forge->dropTable('books');
+        $this->forge->dropTable('projects');
     }
 }

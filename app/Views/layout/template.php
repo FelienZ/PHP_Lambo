@@ -11,28 +11,10 @@
 
 <body>
     <main class="container flex flex-col min-h-screen min-w-screen bg-white text-neutral-950">
-        <nav class="flex bg-neutral-950 text-white justify-between p-5 px-10">
-            <div class="left flex items-center gap-3">
-                <i class="fa-solid fa-book-open"></i>
-                <p class="font-bold text-2xl">Kuchi Library</p>
-            </div>
-            <ul class="flex items-center gap-4">
-                <li><a href="/">Home</a></li>
-                <li><a href="/home/about">About</a></li>
-                <li><a href="/home/contact">Contact</a></li>
-            </ul>
-        </nav>
-
+    
+        <?= $this->include('layout/navbar') ;?>
         <?= $this->renderSection('content') ;?>
-
-        <footer class="flex flex-col gap-3 items-center bg-neutral-950 p-5 text-white">
-    <p class="font-bold">2025 © Developed by FelienZ/Kuchiha</p>
-    <ul class="flex items-center gap-4">
-        <li><i class="fa-brands fa-github text-xl"></i></li>
-        <li><i class="fa-brands fa-linkedin text-xl"></i></li>
-        <li><i class="fa-brands fa-instagram text-xl"></i></li>
-    </ul>
-</footer>
+        <?= $this->include('layout/footer') ;?>
 
 </main>
 </body>

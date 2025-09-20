@@ -6,8 +6,3 @@
         <li><i class="fa-brands fa-instagram text-xl"></i></li>
     </ul>
 </footer>
-
-</main>
-</body>
-
-</html>
