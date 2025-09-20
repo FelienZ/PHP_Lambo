@@ -4,14 +4,26 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
-    public function index(): string
+    //update pakai renderSection / template
+    public function index()
     {
-        return view('welcome_message');
+        $data = [
+            'title' => 'Home Pages'
+        ];
+        echo view('pages/HomePage', $data);
     }
-    public function HomeScreen()
+    public function about()
     {
-        echo view('layout/header');
-        echo view('Home');
-        echo view('layout/footer');
+        $data = [
+            'title' => 'About Pages'
+        ];
+        echo view('pages/About', $data);
+    }
+    public function contact()
+    {
+        $data = [
+            'title' => 'Contact Pages'
+        ];
+        echo view('pages/Contact',$data);
     }
 }
