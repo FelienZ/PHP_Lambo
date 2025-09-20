@@ -7,4 +7,5 @@ use CodeIgniter\Model;
 class ProjectsModel extends Model
 {
     // ...
+    protected $table = 'projects';
 }
