@@ -3,6 +3,9 @@
 <?= $this->section('content');?>
 
 <section class="grid grid-cols-3 place-content-center gap-5 p-4 text-neutral min-h-screen">
+    <div class="inset-0 fixed place-self-end m-5">
+        <a href="/projects/formadd" class="btn btn-primary" onclick="">Tambah +</a>
+    </div>
     <?php foreach($projects as $p): ?>
     <div class="flex flex-col gap-5 border border-neutral items-center p-4">
         <img src="/images/placeholder.jpg" alt="" class="border border-neutral p-3 rounded-sm">

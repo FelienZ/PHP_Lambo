@@ -30,5 +30,10 @@ class Projects extends BaseController
         // $projectsModel = new ProjectsModel();
         return view('projects/index', $data);
     }
-
+    public function formadd(){
+        $data = [
+            'title' => 'Add New Projects'
+        ];
+        return view('projects/FormAdd', $data);
+    }
 }
