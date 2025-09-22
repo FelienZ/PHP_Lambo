@@ -6,13 +6,13 @@
 </div>
 <?php if(session()->getFlashdata('message')) :?>
   <div id="alert-message" class="inset-0 fixed flex m-5 justify-center z-30">
-    <div class="alert-success alert size-fit text-white">
+    <div class="alert-error alert size-fit text-white">
       <?= session()->getFlashdata('message') ?>
     </div>
 </div>
 <?php endif; ?>
 <?php if (count($projects) > 0): ?>
-<div class="overflow-x-auto place-self-center text-neutral min-h-screen my-5 w-[90%] bg-white drop-shadow-md">
+<div class="overflow-x-auto place-self-center rounded-sm text-neutral min-h-screen my-5 w-[90%] bg-white drop-shadow-md">
     <table class="table">
     <!-- head -->
     <thead class="text-white bg-neutral text-center">

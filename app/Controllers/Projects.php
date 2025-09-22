@@ -31,19 +31,28 @@ class Projects extends BaseController
         return view('projects/index', $data);
     }
     public function formadd(){
+        session();
         $data = [
-            'title' => 'Add New Projects'
+            'title' => 'Add New Projects',
+            'validation' => \Config\Services::validation()
         ];
         return view('projects/FormAdd', $data);
     }
     public function save(){
         $id = bin2hex(random_bytes(16));
+
+        if(!$this->validate([
+            'name' => 'required|is_unique[projects.title]'
+        ])){
+            $validation = \Config\Services::validation();
+            return redirect()->to('/projects/formadd')->withInput()->with('validation', $validation);
+        }
         $data = [
             'id' => $id,
-            'title' => $this->request->getPost('project_name'),
-            'image_url' => $this->request->getPost('project_img'),
-            'url' => $this->request->getPost('project_url'),
-            'status' => $this->request->getPost('project_status'),
+            'title' => $this->request->getPost('name'),
+            'image_url' => $this->request->getPost('image'),
+            'url' => $this->request->getPost('url'),
+            'status' => $this->request->getPost('status'),
         ];
         $this->projectsModel->insert($data);
 
