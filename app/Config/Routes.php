@@ -10,3 +10,4 @@ $routes->get('/home/about', 'Home::about');
 
 $routes->get('/projects', 'Projects::index');
 $routes->get('/projects/formadd', 'Projects::formadd');
+$routes->post('/projects/save', 'Projects::save');

@@ -36,4 +36,17 @@ class Projects extends BaseController
         ];
         return view('projects/FormAdd', $data);
     }
+    public function save(){
+        $id = bin2hex(random_bytes(16));
+        $data = [
+            'id' => $id,
+            'title' => $this->request->getPost('project_name'),
+            'image_url' => $this->request->getPost('project_img'),
+            'url' => $this->request->getPost('project_url'),
+            'status' => $this->request->getPost('project_status'),
+        ];
+        $this->projectsModel->insert($data);
+        return redirect()->to('/projects');
+    }
+    
 }

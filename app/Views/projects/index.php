@@ -2,7 +2,8 @@
 
 <?= $this->section('content');?>
 
-<section class="grid grid-cols-3 place-content-center gap-5 p-4 text-neutral min-h-screen">
+<?php if (count($projects) > 0): ?>
+    <section class="grid grid-cols-3 place-content-center gap-5 p-4 text-neutral min-h-screen">
     <div class="inset-0 fixed place-self-end m-5">
         <a href="/projects/formadd" class="btn btn-primary" onclick="">Tambah +</a>
     </div>
@@ -22,8 +23,12 @@
             </div>
         </div>
     </div>
-    <?php endforeach?>
+    <?php endforeach;?>
+</section>
+<?php endif; ?>
 
+<section class="flex flex-col min-h-screen justify-center items-center">
+        <p>Project Sedang Kosong!</p>
 </section>
 
 <?= $this->endSection();?>
