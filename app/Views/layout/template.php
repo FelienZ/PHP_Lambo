@@ -10,13 +10,15 @@
 </head>
 
 <body>
-    <main class="container flex flex-col min-h-screen min-w-screen bg-white text-neutral-950">
+    <main id="root" class="container flex flex-col min-h-screen min-w-screen bg-white text-neutral-950">
     
         <?= $this->include('layout/navbar') ;?>
         <?= $this->renderSection('content') ;?>
         <?= $this->include('layout/footer') ;?>
 
 </main>
+
+<script src="/Scripts/script.js"></script>
 </body>
 
 </html>

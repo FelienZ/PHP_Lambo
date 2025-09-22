@@ -46,6 +46,8 @@ class Projects extends BaseController
             'status' => $this->request->getPost('project_status'),
         ];
         $this->projectsModel->insert($data);
+
+        session()->setFlashdata('message', 'Berhasil Menambahkan!');
         return redirect()->to('/projects');
     }
     
