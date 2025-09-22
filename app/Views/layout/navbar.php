@@ -3,9 +3,9 @@
         <i class="fa-solid fa-book-open"></i>
         <p class="font-bold text-2xl">Kuchi Projects</p>
     </div>
-    <ul class="flex items-center gap-4">
+    <ul class="flex items-center gap-8">
         <li><a href="/">Home</a></li>
-        <li><a href="/home/about">About Me</a></li>
-        <li><a href="/projects">My Projects</a></li>
+        <li><a href="/home/about">About</a></li>
+        <li><a href="/projects">Projects</a></li>
     </ul>
 </nav>

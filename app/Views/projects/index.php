@@ -1,34 +1,46 @@
 <?= $this->extend('layout/template');?>
 
 <?= $this->section('content');?>
-
-<?php if (count($projects) > 0): ?>
-    <section class="grid grid-cols-3 place-content-center gap-5 p-4 text-neutral min-h-screen">
-    <div class="inset-0 fixed place-self-end m-5">
+<div class="inset-0 fixed place-self-end m-5 z-30">
         <a href="/projects/formadd" class="btn btn-primary" onclick="">Tambah +</a>
-    </div>
-    <?php foreach($projects as $p): ?>
-    <div class="flex flex-col gap-5 border border-neutral items-center p-4">
-        <img src="/images/placeholder.jpg" alt="" class="border border-neutral p-3 rounded-sm">
-        <div class="grid grid-cols-2 gap-2 w-full px-5">
-            <div class="left flex flex-col gap-2">
-                <p class="font-bold">Name Projects: </p>
-                <p class="font-bold">URL Projects: </p>
-                <p class="font-bold">Status: </p>
-            </div>
-            <div class="right flex flex-col gap-2">
-                <p><?= $p['title'] ?></p>
-                <p><?= $p['url'] ?></p>
-                <button class="<?php echo $p['status'] == 'Done' ? 'btn-success':'btn-warning'?> btn btn-outline w-fit"><?= $p['status'] ?></button>
-            </div>
-        </div>
-    </div>
+</div>
+<?php if (count($projects) > 0): ?>
+<div class="overflow-x-auto place-self-center text-neutral min-h-screen my-5 w-[90%] bg-white drop-shadow-md">
+    <table class="table">
+    <!-- head -->
+    <thead class="text-white bg-neutral text-center">
+      <tr>
+        <th>No.</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>URL</th>
+        <th>Status</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <?php foreach($projects as $index => $p): ?>
+    <tbody class="h-50 text-center">
+      <!-- row 1 -->
+      <tr>
+        <th><?= $index + 1 ?></th>
+        <td class="place-items-center"><!-- <?= $p['image_url']?> --> <img src="/images/placeholder.jpg" class="lg:size-25 size-15 max-sm:size-10 rounded-sm"></td>
+        <td><?= $p['title']?></td>
+        <td><?= $p['url']?></td>
+        <td><button class="<?php echo $p['status'] == 'Done' ? 'btn-success' : 'btn-warning' ?>  btn btn-outline font-normal"><?= $p['status']?></button></td>
+        <td class="flex items-center gap-2 justify-center h-50">
+            <button class="btn text-white btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
+            <button class="btn text-white btn-error">Hapus <i class="fa-solid fa-trash"></i></button>
+        </td>
+      </tr>
+    </tbody>
     <?php endforeach;?>
-</section>
+    </table>
+</div>
+<?php else: ?>
+    <section class="flex flex-col min-h-screen justify-center items-center">
+        <p>Project Sedang Kosong!</p>
+    </section>
 <?php endif; ?>
 
-<section class="flex flex-col min-h-screen justify-center items-center">
-        <p>Project Sedang Kosong!</p>
-</section>
 
 <?= $this->endSection();?>
