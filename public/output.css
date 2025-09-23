@@ -7,11 +7,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-200: oklch(88.5% 0.062 18.334);
     --color-red-300: oklch(80.8% 0.114 19.571);
-    --color-red-400: oklch(70.4% 0.191 22.216);
-    --color-red-500: oklch(63.7% 0.237 25.331);
-    --color-gray-400: oklch(70.7% 0.022 261.325);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-neutral-700: oklch(37.1% 0 0);
     --color-neutral-950: oklch(14.5% 0 0);
@@ -29,10 +25,8 @@
     --font-weight-normal: 400;
     --font-weight-bold: 700;
     --radius-sm: 0.25rem;
-    --radius-md: 0.375rem;
     --drop-shadow-md: 0 3px 3px rgb(0 0 0 / 0.12);
     --drop-shadow-lg: 0 4px 4px rgb(0 0 0 / 0.15);
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1962,11 +1956,6 @@
       grid-row-start: 1;
     }
   }
-  .drawer-content {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    min-width: calc(0.25rem * 0);
-  }
   .timeline-middle {
     grid-column-start: 2;
     grid-row-start: 2;
@@ -2329,9 +2318,6 @@
   .w-\[90\%\] {
     width: 90%;
   }
-  .w-fit {
-    width: fit-content;
-  }
   .w-full {
     width: 100%;
   }
@@ -2429,9 +2415,6 @@
   .overflow-x-auto {
     overflow-x: auto;
   }
-  .rounded-md {
-    border-radius: var(--radius-md);
-  }
   .rounded-sm {
     border-radius: var(--radius-sm);
   }
@@ -2443,11 +2426,6 @@
     border-color: var(--color-error);
     color: var(--color-error-content);
     --alert-color: var(--color-error);
-  }
-  .alert-info {
-    border-color: var(--color-info);
-    color: var(--color-info-content);
-    --alert-color: var(--color-info);
   }
   .border-gray-800 {
     border-color: var(--color-gray-800);
@@ -2464,40 +2442,13 @@
   .bg-neutral-950 {
     background-color: var(--color-neutral-950);
   }
-  .bg-red-200 {
-    background-color: var(--color-red-200);
-  }
   .bg-red-300 {
     background-color: var(--color-red-300);
-  }
-  .bg-red-300\/10 {
-    background-color: color-mix(in srgb, oklch(80.8% 0.114 19.571) 10%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-red-300) 10%, transparent);
-    }
   }
   .bg-red-300\/35 {
     background-color: color-mix(in srgb, oklch(80.8% 0.114 19.571) 35%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-red-300) 35%, transparent);
-    }
-  }
-  .bg-red-300\/50 {
-    background-color: color-mix(in srgb, oklch(80.8% 0.114 19.571) 50%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-red-300) 50%, transparent);
-    }
-  }
-  .bg-red-400 {
-    background-color: var(--color-red-400);
-  }
-  .bg-red-500 {
-    background-color: var(--color-red-500);
-  }
-  .bg-red-500\/60 {
-    background-color: color-mix(in srgb, oklch(63.7% 0.237 25.331) 60%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-red-500) 60%, transparent);
     }
   }
   .bg-transparent {
@@ -2508,9 +2459,6 @@
   }
   .mask-repeat {
     mask-repeat: repeat;
-  }
-  .fill-red-300 {
-    fill: var(--color-red-300);
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
@@ -2557,6 +2505,9 @@
   .text-wrap {
     text-wrap: wrap;
   }
+  .text-error {
+    color: var(--color-error);
+  }
   .text-neutral {
     color: var(--color-neutral);
   }
@@ -2594,10 +2545,6 @@
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
     transition-timing-function: var(--ease-in-out);
-  }
-  .ease-out {
-    --tw-ease: var(--ease-out);
-    transition-timing-function: var(--ease-out);
   }
   .btn-outline {
     &:not( .btn-active, :hover, :active:focus, :focus-visible, :disabled, [disabled], .btn-disabled, :checked ) {

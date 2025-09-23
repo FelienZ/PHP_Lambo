@@ -42,7 +42,10 @@ class Projects extends BaseController
         $id = bin2hex(random_bytes(16));
 
         if(!$this->validate([
-            'name' => 'required|is_unique[projects.title]'
+            'name' => 'required|is_unique[projects.title]',
+            'url' => 'required',
+            'image' => 'required',
+            'status' => 'required'
         ])){
             $validation = \Config\Services::validation();
             return redirect()->to('/projects/formadd')->withInput()->with('validation', $validation);
