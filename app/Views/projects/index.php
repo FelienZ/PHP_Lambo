@@ -6,7 +6,7 @@
 </div>
 <?php if(session()->getFlashdata('message')) :?>
   <div id="alert-message" class="inset-0 fixed flex m-5 justify-center z-30">
-    <div class="alert-error alert size-fit text-white">
+    <div class="alert-success alert size-fit text-white">
       <?= session()->getFlashdata('message') ?>
     </div>
 </div>
@@ -26,17 +26,20 @@
       </tr>
     </thead>
     <?php foreach($projects as $index => $p): ?>
-    <tbody class="h-50 text-center">
+    <tbody class="text-center">
       <!-- row 1 -->
-      <tr>
-        <th><?= $index + 1 ?></th>
+      <tr class="border-b border-neutral">
+        <th><?= $index + 1 ?>.</th>
         <td class="place-items-center"><!-- <?= $p['image_url']?> --> <img src="/images/placeholder.jpg" class="lg:size-25 size-15 max-sm:size-10 rounded-sm"></td>
         <td><?= $p['title']?></td>
         <td><?= $p['url']?></td>
         <td><button class="<?php echo $p['status'] == 'Done' ? 'btn-success' : 'btn-warning' ?>  btn btn-outline font-normal"><?= $p['status']?></button></td>
-        <td class="flex items-center gap-2 justify-center h-50">
-            <button class="btn text-white btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></button>
-            <button class="btn text-white btn-error">Hapus <i class="fa-solid fa-trash"></i></button>
+        <td class="grid h-40 items-center justify-center">
+            <a href="/projects/edit/<?= $p['id'];?>" class="btn text-white btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+            <form action="/projects/delete/<?= $p['id'];?>" method="post">
+              <?= csrf_field();?>
+              <button class="btn text-white btn-error">Hapus <i class="fa-solid fa-trash"></i></button>
+            </form>
         </td>
       </tr>
     </tbody>

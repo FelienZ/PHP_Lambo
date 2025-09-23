@@ -42,10 +42,31 @@ class Projects extends BaseController
         $id = bin2hex(random_bytes(16));
 
         if(!$this->validate([
-            'name' => 'required|is_unique[projects.title]',
-            'url' => 'required',
-            'image' => 'required',
-            'status' => 'required'
+            'name' => [
+                'rules' => 'required|is_unique[projects.title]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'is_unique' => '{field} duplikat'
+                ]
+            ],
+            'url' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong'
+                ]
+            ],
+            'image' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong'
+                ]
+            ],
+            'status' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong'
+                ]
+            ],
         ])){
             $validation = \Config\Services::validation();
             return redirect()->to('/projects/formadd')->withInput()->with('validation', $validation);
@@ -63,4 +84,62 @@ class Projects extends BaseController
         return redirect()->to('/projects');
     }
     
+    public function edit($id){
+
+        $data = [
+            'title' => 'Edit Pages',
+            'validation' => \Config\Services::validation(),
+            'projects' => $this->projectsModel->find($id)
+        ];
+        return view('projects/FormEdit', $data);
+    }
+    
+    public function delete($id){
+        $this->projectsModel->delete($id);
+        session()->setFlashdata('message', 'Berhasil Hapus!');
+        return redirect()->to('/projects');
+    }
+
+    public function update($id){
+        if(!$this->validate([
+            'name' => [
+                'rules' => 'required|is_unique[projects.title]',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong',
+                    'is_unique' => '{field} duplikat'
+                ]
+            ],
+            'url' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong'
+                ]
+            ],
+            'image' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong'
+                ]
+            ],
+            'status' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} tidak boleh kosong'
+                ]
+            ],
+        ])){
+            $validation = \Config\Services::validation();
+            return redirect()->to('/projects/edit/'.$id)->withInput()->with('validation', $validation);
+        }
+        $data = [
+            'id' => $id,
+            'title' => $this->request->getPost('name'),
+            'image_url' => $this->request->getPost('image'),
+            'url' => $this->request->getPost('url'),
+            'status' => $this->request->getPost('status'),
+        ];
+        $this->projectsModel->save($data);
+        session()->setFlashdata('message', 'Berhasil Memperbarui!');
+        return redirect()->to('/projects');
+    }
 }

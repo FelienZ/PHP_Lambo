@@ -6,12 +6,12 @@ const alertMessage = document.getElementById('alert-message');
 const inputColumn = document.querySelectorAll('#inputColumn')
 const errorMessage = document.querySelectorAll('.errorMessage')
 
+const deleteBtn = document.querySelectorAll('#deleteButton')
+
 navBtn.addEventListener('click', ()=>{
     menu.classList.toggle('hidden');
     menu.classList.toggle('flex');
 })
-console.log(inputColumn)
-console.log(errorMessage)
 alertMessage? setTimeout(() => {
     main.removeChild(alertMessage);
 }, 2000) : ''
@@ -19,7 +19,18 @@ alertMessage? setTimeout(() => {
 errorMessage.length ? (
     inputColumn.forEach((i,idx)=> {
         setTimeout(() => {
-            i.removeChild(errorMessage[idx])
+            errorMessage[idx].classList.add('opacity-0');
+            setTimeout(() => {
+                i.removeChild(errorMessage[idx])
+            }, 500);
         }, 2000)
     })
 ) : ''
+
+/* deleteBtn.forEach((i,idx) => {
+    i.addEventListener('click', async()=> {
+        await fetch('http://localhost:8080/projects/delete/c04474748ed6eeea', {
+            method: 'DELETE'
+        })
+    })
+}) */
