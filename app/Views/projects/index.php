@@ -12,7 +12,7 @@
 </div>
 <?php endif; ?>
 <?php if (count($projects) > 0): ?>
-<div class="overflow-x-auto place-self-center rounded-sm text-neutral min-h-screen my-5 w-[90%] bg-white drop-shadow-md">
+<div class="overflow-auto place-self-center rounded-sm text-neutral max-h-screen my-5 w-[90%] bg-white drop-shadow-md">
     <table class="table">
     <!-- head -->
     <thead class="text-white bg-neutral text-center">
@@ -32,8 +32,8 @@
         <th><?= $index + 1 ?>.</th>
         <td class="place-items-center"><!-- <?= $p['image_url']?> --> <img src="/images/placeholder.jpg" class="lg:size-25 size-15 max-sm:size-10 rounded-sm"></td>
         <td><?= $p['title']?></td>
-        <td><?= $p['url']?></td>
-        <td><button class="<?php echo $p['status'] == 'Done' ? 'btn-success' : 'btn-warning' ?>  btn btn-outline font-normal"><?= $p['status']?></button></td>
+        <td><a href="<?= $p['url']?>"><?= $p['url']?></a></td>
+        <td><button class="<?php echo $p['status'] == 'Done' ? 'btn-success' : 'btn-warning' ?> text-nowrap btn btn-outline font-normal"><?= $p['status']?></button></td>
         <td class="grid h-40 items-center justify-center">
             <a href="/projects/edit/<?= $p['id'];?>" class="btn text-white btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></a>
             <form action="/projects/delete/<?= $p['id'];?>" method="post">
