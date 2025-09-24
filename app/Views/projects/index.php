@@ -12,8 +12,9 @@
 </div>
 <?php endif; ?>
 <?php if (count($projects) > 0): ?>
-<div class="overflow-auto place-self-center rounded-sm text-neutral max-h-screen my-5 w-[90%] bg-white drop-shadow-md">
-    <table class="table">
+<div class="overflow-x-auto place-self-center rounded-sm text-neutral min-h-screen my-5 w-[90%] bg-white drop-shadow-md">
+    <div class="flex fle-col max-h-screen overflow-y-auto">
+      <table class="table">
     <!-- head -->
     <thead class="text-white bg-neutral text-center">
       <tr>
@@ -45,6 +46,7 @@
     </tbody>
     <?php endforeach;?>
     </table>
+    </div>
 </div>
 <?php else: ?>
     <section class="flex flex-col min-h-screen justify-center items-center">
