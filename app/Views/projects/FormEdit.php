@@ -33,7 +33,7 @@
                 <?php endif?>
             <div id="inputColumn" class="nama flex flex-col gap-1">
                 <p class="text-sm">Upload Gambar: </p>
-                <input type="file" name="image" value="<?= $projects['image_url'] ;?>" class="file-input bg-transparent border border-neutral w-full">
+                <input type="file" name="image" class="file-input bg-transparent border border-neutral w-full">
                 <?php if(session()->has('validation')): ?>
                     <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session('validation')->getError('image') ?></p>
                 <?php endif?>

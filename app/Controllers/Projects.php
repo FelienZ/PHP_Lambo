@@ -39,9 +39,7 @@ class Projects extends BaseController
         return view('projects/FormAdd', $data);
     }
     public function save(){
-        $id = bin2hex(random_bytes(16));
-
-        if(!$this->validate([
+        $rules = [
             'name' => [
                 'rules' => 'required|is_unique[projects.title]',
                 'errors' => [
@@ -55,26 +53,37 @@ class Projects extends BaseController
                     'required' => '{field} tidak boleh kosong'
                 ]
             ],
-            'image' => [
-                'rules' => 'required',
+            /* 'image' => [
+                'rules' => 'uploaded[image]',
                 'errors' => [
-                    'required' => '{field} tidak boleh kosong'
+                    'uploaded' => '{field} tidak boleh kosong',
                 ]
-            ],
+            ], */
             'status' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong'
                 ]
             ],
-        ])){
-            $validation = \Config\Services::validation();
-            return redirect()->to('/projects/formadd')->withInput()->with('validation', $validation);
+        ];
+        if(!$this->validate($rules)){
+            return redirect()->to('/projects/formadd')->with('validation', $this->validator);
+        }
+        $id = bin2hex(random_bytes(16));
+        $file = $this->request->getFile('image');
+        if($file->isValid() && !$file->hasMoved()){
+            $fileName = $file->getRandomName();
+            $file->move('images/uploads', $fileName);
+        }else{
+            $fileName = 'placeholder.jpg';
+            session()->setFlashdata('message', 'Gambar Harus Diupload');
+            return redirect()->to('/projects/formadd');
         }
         $data = [
             'id' => $id,
             'title' => $this->request->getPost('name'),
-            'image_url' => $this->request->getPost('image'),
+            'image_url' => $fileName,
+            // 'image_url' => $this->request->getPost('image'),
             'url' => $this->request->getPost('url'),
             'status' => $this->request->getPost('status'),
         ];
@@ -129,7 +138,7 @@ class Projects extends BaseController
             ],
         ])){
             $validation = \Config\Services::validation();
-            return redirect()->to('/projects/edit/'.$id)->withInput()->with('validation', $validation);
+            return redirect()->to('/projects/edit/'.$id)->with('validation', $validation);
         }
         $data = [
             'id' => $id,

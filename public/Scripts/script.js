@@ -7,6 +7,9 @@ const inputColumn = document.querySelectorAll('#inputColumn')
 const errorMessage = document.querySelectorAll('.errorMessage')
 
 const deleteBtn = document.querySelectorAll('#deleteButton')
+const btnHero = document.getElementById('btnHero')
+
+const myProjects = document.querySelector('.myProjects')
 
 navBtn.addEventListener('click', ()=>{
     menu.classList.toggle('hidden');
@@ -27,10 +30,8 @@ errorMessage.length ? (
     })
 ) : ''
 
-/* deleteBtn.forEach((i,idx) => {
-    i.addEventListener('click', async()=> {
-        await fetch('http://localhost:8080/projects/delete/c04474748ed6eeea', {
-            method: 'DELETE'
-        })
+btnHero ? (
+    btnHero.addEventListener('click', ()=> {
+        myProjects.scrollIntoView({behavior: "smooth"})
     })
-}) */
+) : ''

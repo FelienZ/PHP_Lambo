@@ -31,9 +31,9 @@
       <!-- row 1 -->
       <tr class="border-b border-neutral">
         <th><?= $index + 1 ?>.</th>
-        <td class="place-items-center"><!-- <?= $p['image_url']?> --> <img src="/images/placeholder.jpg" class="lg:size-25 size-15 max-sm:size-10 rounded-sm"></td>
+        <td class="place-items-center"><img src="/images/uploads/<?= $p['image_url']?>" class="lg:h-30 max-sm:size-10 rounded-sm"></td>
         <td><?= $p['title']?></td>
-        <td><a href="<?= $p['url']?>"><?= $p['url']?></a></td>
+        <td><a href="<?= $p['url']?>" class="hover:text-success hover:underline hover:underline-offset-2"><?= $p['url']?></a></td>
         <td><button class="<?php echo $p['status'] == 'Done' ? 'btn-success' : 'btn-warning' ?> text-nowrap btn btn-outline font-normal"><?= $p['status']?></button></td>
         <td class="grid h-40 items-center justify-center">
             <a href="/projects/edit/<?= $p['id'];?>" class="btn text-white btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></a>
