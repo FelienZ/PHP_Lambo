@@ -66,8 +66,10 @@ class Projects extends BaseController
                 ]
             ],
         ];
+        $error = [];
         if(!$this->validate($rules)){
-            return redirect()->to('/projects/formadd')->with('validation', $this->validator);
+            // return redirect()->to('/projects/formadd')->with('validation', $this->validator);
+            $error = $this->validator->getErrors();
         }
         $id = bin2hex(random_bytes(16));
         $file = $this->request->getFile('image');
@@ -76,8 +78,13 @@ class Projects extends BaseController
             $file->move('images/uploads', $fileName);
         }else{
             $fileName = 'placeholder.jpg';
-            session()->setFlashdata('message', 'Gambar Harus Diupload');
-            return redirect()->to('/projects/formadd');
+            // session()->setFlashdata('message', 'Gambar Harus Diupload');
+            $error['image'] = 'Gambar Harus Diupload';
+            // return redirect()->to('/projects/formadd')->withInput();
+        }
+        if(count($error) > 0){
+            session()->setFlashdata($error, $error);
+            return redirect()->to('/projects/formadd')->withInput();
         }
         $data = [
             'id' => $id,
@@ -138,8 +145,10 @@ class Projects extends BaseController
                 ]
             ],
         ];
+        $error = [];
         if(!$this->validate($rules)){
-            return redirect()->to('/projects/edit/'.$id)->with('validation', $this->validator);
+            // return redirect()->to('/projects/edit/'.$id)->with('validation', $this->validator);
+            $error = $this->validator->getErrors();
         }
         $file = $this->request->getFile('image');
         if($file->isValid() && !$file->hasMoved()){
@@ -147,8 +156,12 @@ class Projects extends BaseController
             $file->move('images/uploads', $fileName);
         }else{
             $fileName = 'placeholder.jpg';
-            session()->setFlashdata('message', 'Gambar Harus Diupload');
-            return redirect()->to('/projects/edit/'.$id);
+            $error['image'] = 'Gambar Harus diupload';
+            // return redirect()->to('/projects/edit/'.$id);
+        }
+        if(count($error) > 0){
+            session()->setFlashdata($error, $error);
+            return redirect()->to('projects/edit/'.$id)->withInput();
         }
         $data = [
             'id' => $id,

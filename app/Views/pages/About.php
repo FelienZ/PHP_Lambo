@@ -12,13 +12,13 @@
             <div class="profile flex flex-col bg-white drop-shadow-sm rounded-md justify-center items-center p-3 gap-3 w-full">
                 <p class="text-3xl font-light">Hello I'm Rajab!</p>
                 <span class="text-lg flex max-sm:flex-col items-center gap-3">
-                    <p>Codename</p>
+                    <p class="text-sm">Codename: </p>
                     <div class="tag items-center flex gap-2">
                         <p class="badge badge-outline badge-success">FelienZ</p> 
                         <p class="badge badge-outline badge-success">Kuchiha</p>
                     </div>
                 </span>
-                <a href="https://github.com/FelienZ" class="hover:text-success flex items-center gap-3">My Github: <i class="fa-brands fa-github text-2xl"></i></a>
+                <p class="flex items-center gap-3">My Github: <a href="https://github.com/FelienZ"><i class="fa-brands hover:text-fuchsia-700 fa-github text-2xl"></i></a></p>
             </div>
         </div>
         <div class="bottom grid bg-white drop-shadow-sm rounded-sm p-3 w-full">

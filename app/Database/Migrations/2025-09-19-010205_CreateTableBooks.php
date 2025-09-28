@@ -37,7 +37,7 @@ class CreateTableBooks extends Migration
         $this->forge->addKey('id', true);
         $this->forge->createTable('projects');
     }
-    //ubah -> tambah col updatedAt (datetime, default timestamp current), Description (json nullable)
+    //ubah -> tambah col updatedAt (datetime, default timestamp current), Description (text nullable)
 
     public function down()
     {

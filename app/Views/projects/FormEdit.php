@@ -10,15 +10,15 @@
             <div id="inputColumn" class="nama flex flex-col gap-1">
                 <p class="text-sm">Masukkan Nama Project: </p>
                 <input type="text" value="<?= $projects['title'] ;?>" name="name" placeholder="Nama Project" class="input w-full bg-transparent border border-neutral">
-                <?php if(session()->has('validation')): ?>
-                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session('validation')->getError('name') ?></p>
+                <?php if(session()->getFlashdata('name')): ?>
+                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session()->getFlashdata('name') ?></p>
                 <?php endif?>
             </div>
             <div id="inputColumn" class="flex flex-col gap-1">
                 <p class="text-sm">Masukkan URL Project: </p>
                 <input type="text" name="url" value="<?= $projects['url'] ;?>" placeholder="URL Project" class="input w-full bg-transparent border border-neutral">
-                <?php if(session()->has('validation')): ?>
-                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session('validation')->getError('url') ?></p>
+                <?php if(session()->getFlashdata('url')): ?>
+                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session()->getFlashdata('url') ?></p>
                 <?php endif?>
             </div>
             <div id="inputColumn" class="flex flex-col gap-1">
@@ -28,14 +28,14 @@
                     <option value="Done">Done</option>
                     <option value="On Progress">On Progress</option>
                 </select>
-                <?php if(session()->has('validation')): ?>
-                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session('validation')->getError('status') ?></p>
+                <?php if(session()->getFlashdata('status')): ?>
+                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session()->getFlashdata('status') ?></p>
                 <?php endif?>
             <div id="inputColumn" class="nama flex flex-col gap-1">
                 <p class="text-sm">Upload Gambar: </p>
                 <input type="file" value="<?= $projects['image_url']?>" name="image" class="file-input bg-transparent border border-neutral w-full">
-                <?php if(session()->getFlashdata('message')): ?>
-                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session()->getFlashdata('message'); ?></p>
+                <?php if(session()->getFlashdata('image')): ?>
+                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session()->getFlashdata('image'); ?></p>
                 <?php endif?>
             </div>
             <div id="inputColumn" class="flex flex-col gap-1">
