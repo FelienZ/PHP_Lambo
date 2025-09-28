@@ -33,10 +33,14 @@
                 <?php endif?>
             <div id="inputColumn" class="nama flex flex-col gap-1">
                 <p class="text-sm">Upload Gambar: </p>
-                <input type="file" name="image" class="file-input bg-transparent border border-neutral w-full">
+                <input type="file" value="<?= $projects['image_url']?>" name="image" class="file-input bg-transparent border border-neutral w-full">
                 <?php if(session()->getFlashdata('message')): ?>
                     <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session()->getFlashdata('message'); ?></p>
                 <?php endif?>
+            </div>
+            <div id="inputColumn" class="flex flex-col gap-1">
+                <p class="text-sm">Deskripsi: </p>
+                <textarea name="description" placeholder="Deskripsi Project" class="textarea resize-none w-full bg-transparent border border-neutral"><?= $projects['deskripsi']?>"</textarea>
             </div>
         </div>
 

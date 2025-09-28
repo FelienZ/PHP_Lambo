@@ -9,17 +9,17 @@
         <button id="btnHero" class="btn btn-primary">Lets Start!</button>
     </div>
 
-    <div class="myProjects w-[80%] my-5 self-center flex flex-col gap-4 p-3">
-        <p class="font-bold text-xl">HIGHLIGHT PROJECT</p>
+    <div class="myProjects xl:w-[85%] my-5 self-center flex flex-col gap-4 p-3">
+        <p class="font-bold text-xl text-center">HIGHLIGHT PROJECT</p>
         <?php if (count($projects) > 0): ?>
-            <div class="flex justify-center gap-5 p-4 drop-shadow-md bg-white">
+            <div class="grid xl:flex justify-center gap-8 p-8 drop-shadow-md bg-white">
             <?php foreach ($projects as $index => $p):  ?>
                 <?php if ($index <3): ?>
-                        <div class="flex flex-col gap-3 items-center border border-neutral rounded-sm p-3 w-full">
-                            <img src="/images/uploads/<?= $p['image_url']?>"alt="" class="size-45 w-full drop-shadow-md">
+                        <div class="flex flex-col gap-3 items-center bg-white drop-shadow-md rounded-sm p-3 w-full">
+                            <img src="/images/uploads/<?= $p['image_url']?>"alt="" class="size-45 rounded-sm w-full drop-shadow-md">
                             <p class="font-bold"><?= $p['title'];?></p>
                             <a href="<?= $p['url'];?>" class="hover:text-success hover:underline hover:underline-offset-2"><?= $p['url'];?></a>
-                            <button class="btn btn-neutral w-full">Check</button>
+                            <a href="/projects/detail/<?= $p['id'];?>" class="btn btn-neutral w-full">Check</a>
                         </div>
                 <?php endif;?>
             <?php endforeach;?>

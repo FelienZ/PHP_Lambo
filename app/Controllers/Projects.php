@@ -84,6 +84,7 @@ class Projects extends BaseController
             'title' => $this->request->getPost('name'),
             'image_url' => $fileName,
             // 'image_url' => $this->request->getPost('image'),
+            'deskripsi' => $this->request->getPost('description'),
             'url' => $this->request->getPost('url'),
             'status' => $this->request->getPost('status'),
         ];
@@ -110,7 +111,7 @@ class Projects extends BaseController
     }
 
     public function update($id){
-        $rules = ([
+        $rules = [
             'name' => [
                 'rules' => 'required',
                 'errors' => [
@@ -136,7 +137,7 @@ class Projects extends BaseController
                     'required' => '{field} tidak boleh kosong'
                 ]
             ],
-        ]);
+        ];
         if(!$this->validate($rules)){
             return redirect()->to('/projects/edit/'.$id)->with('validation', $this->validator);
         }
@@ -155,9 +156,19 @@ class Projects extends BaseController
             'image_url' => $fileName,
             'url' => $this->request->getPost('url'),
             'status' => $this->request->getPost('status'),
+            'deskripsi' => $this->request->getPost('description')
         ];
         $this->projectsModel->save($data);
         session()->setFlashdata('message', 'Berhasil Memperbarui!');
         return redirect()->to('/projects');
+    }
+
+    public function detail($id){
+        $projects = $this->projectsModel->find($id);
+        $data = [
+            'title' => $projects['title'],
+            'projects' => $projects
+        ];
+        return view('projects/Detailpage', $data);
     }
 }

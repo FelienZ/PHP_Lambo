@@ -34,7 +34,7 @@
         <td class="place-items-center"><img src="/images/uploads/<?= $p['image_url']?>" class="lg:h-30 max-sm:size-10 rounded-sm"></td>
         <td><?= $p['title']?></td>
         <td><a href="<?= $p['url']?>" class="hover:text-success hover:underline hover:underline-offset-2"><?= $p['url']?></a></td>
-        <td><button class="<?php echo $p['status'] == 'Done' ? 'btn-success' : 'btn-warning' ?> text-nowrap btn btn-outline font-normal"><?= $p['status']?></button></td>
+        <td><p class="<?= $p['status'] == 'Done' ? 'badge-success' : 'badge-warning' ?> text-nowrap badge badge-outline font-normal"><?= $p['status']?></p></td>
         <td class="grid h-40 items-center justify-center">
             <a href="/projects/edit/<?= $p['id'];?>" class="btn text-white btn-warning">Edit <i class="fa-solid fa-pen-to-square"></i></a>
             <form action="/projects/delete/<?= $p['id'];?>" method="post">

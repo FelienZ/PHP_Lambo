@@ -38,6 +38,10 @@
                     <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session()->getFlashdata('message') ?></p>
                 <?php endif?>
             </div>
+            <div id="inputColumn" class="flex flex-col gap-1">
+                <p class="text-sm">Deskripsi: </p>
+                <textarea name="description" placeholder="Deskripsi Project" class="textarea resize-none w-full bg-transparent border border-neutral"></textarea>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-neutral">Submit</button>
