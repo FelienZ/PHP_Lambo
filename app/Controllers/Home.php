@@ -15,9 +15,21 @@ class Home extends BaseController
     public function index()
     {
         $projects = $this->projectsModel->findAll();
+        $items = [
+            'React' => 'React.png',
+            'NodeJs' => 'nodejs.png',
+            'Tailwind CSS' => 'tailwind.svg',
+            'Laravel' => 'laravel.png',
+            'JavaScript' => 'js.png',
+            'Github' => 'github.svg',
+            'Supabase' => 'supabase.png',
+            'PostgreSQL' => 'Postgresql.png',
+            'MySQL' => 'mysql.svg'
+        ];
         $data = [
             'title' => 'Home Pages',
-            'projects' => $projects
+            'projects' => $projects,
+            'tools' => $items
         ];
         return view('pages/HomePage', $data);
     }
