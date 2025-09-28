@@ -14,7 +14,7 @@ class Home extends BaseController
     }
     public function index()
     {
-        $projects = $this->projectsModel -> findAll();
+        $projects = $this->projectsModel->findAll();
         $data = [
             'title' => 'Home Pages',
             'projects' => $projects

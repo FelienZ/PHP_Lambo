@@ -16,7 +16,7 @@
             <?php foreach ($projects as $index => $p):  ?>
                 <?php if ($index <3): ?>
                         <div class="flex flex-col gap-3 items-center border border-neutral rounded-sm p-3 w-full">
-                            <img src="/images/uploads/placeholder.jpg" alt="" class="size-45 drop-shadow-md">
+                            <img src="/images/uploads/<?= $p['image_url']?>"alt="" class="size-45 w-full drop-shadow-md">
                             <p class="font-bold"><?= $p['title'];?></p>
                             <a href="<?= $p['url'];?>" class="hover:text-success hover:underline hover:underline-offset-2"><?= $p['url'];?></a>
                             <button class="btn btn-neutral w-full">Check</button>

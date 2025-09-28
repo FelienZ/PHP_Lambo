@@ -3,7 +3,7 @@
 <?= $this->section('content');?>
 
 <section class="flex flex-col justify-center items-center p-4 text-neutral min-h-screen">
-    <form action="/projects/update/<?=$projects['id'];?>" method="post" class="flex flex-col w-[30%] p-5 rounded-sm gap-8 justify-center bg-white drop-shadow-lg ">
+    <form enctype="multipart/form-data" action="/projects/update/<?=$projects['id'];?>" method="post" class="flex flex-col w-[30%] p-5 rounded-sm gap-8 justify-center bg-white drop-shadow-lg ">
         <?= csrf_field();?>
         <p class="text-center font-bold text-xl">EDIT PROJECT</p>
         <div class="input-column flex flex-col gap-3">
@@ -34,8 +34,8 @@
             <div id="inputColumn" class="nama flex flex-col gap-1">
                 <p class="text-sm">Upload Gambar: </p>
                 <input type="file" name="image" class="file-input bg-transparent border border-neutral w-full">
-                <?php if(session()->has('validation')): ?>
-                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session('validation')->getError('image') ?></p>
+                <?php if(session()->getFlashdata('message')): ?>
+                    <p class="errorMessage text-error text-sm transition-opacity duration-500"><?= session()->getFlashdata('message'); ?></p>
                 <?php endif?>
             </div>
         </div>

@@ -110,9 +110,9 @@ class Projects extends BaseController
     }
 
     public function update($id){
-        if(!$this->validate([
+        $rules = ([
             'name' => [
-                'rules' => 'required|is_unique[projects.title]',
+                'rules' => 'required',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong',
                     'is_unique' => '{field} duplikat'
@@ -124,26 +124,35 @@ class Projects extends BaseController
                     'required' => '{field} tidak boleh kosong'
                 ]
             ],
-            'image' => [
+            /* 'image' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong'
                 ]
-            ],
+            ], */
             'status' => [
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} tidak boleh kosong'
                 ]
             ],
-        ])){
-            $validation = \Config\Services::validation();
-            return redirect()->to('/projects/edit/'.$id)->with('validation', $validation);
+        ]);
+        if(!$this->validate($rules)){
+            return redirect()->to('/projects/edit/'.$id)->with('validation', $this->validator);
+        }
+        $file = $this->request->getFile('image');
+        if($file->isValid() && !$file->hasMoved()){
+            $fileName = $file->getRandomName();
+            $file->move('images/uploads', $fileName);
+        }else{
+            $fileName = 'placeholder.jpg';
+            session()->setFlashdata('message', 'Gambar Harus Diupload');
+            return redirect()->to('/projects/edit/'.$id);
         }
         $data = [
             'id' => $id,
             'title' => $this->request->getPost('name'),
-            'image_url' => $this->request->getPost('image'),
+            'image_url' => $fileName,
             'url' => $this->request->getPost('url'),
             'status' => $this->request->getPost('status'),
         ];
