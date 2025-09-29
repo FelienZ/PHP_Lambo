@@ -18,7 +18,7 @@
             <div class="grid lg:flex justify-center gap-5 p-5 drop-shadow-md rounded-lg bg-white">
             <?php foreach ($projects as $index => $p):  ?>
                 <?php if ($index <3): ?>
-                        <div class="flex flex-col gap-3 items-center bg-white drop-shadow-md rounded-sm p-3 w-full">
+                        <div data-aos="fade-right" class="flex flex-col gap-3 items-center bg-white drop-shadow-md rounded-sm p-3 w-full">
                             <img src="/images/uploads/<?= $p['image_url']?>"alt="" class="size-45 rounded-sm w-full drop-shadow-md">
                             <p class="font-bold"><?= $p['title'];?></p>
                             <a href="<?= $p['url'];?>" class="hover:text-success text-nowrap hover:underline hover:underline-offset-2"><?= $p['url'];?></a>

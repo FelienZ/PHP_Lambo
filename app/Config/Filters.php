@@ -78,8 +78,8 @@ class Filters extends BaseFilters
      */
     public array $globals = [
         'before' => [
-            'honeypot',
-            'login'
+            // 'honeypot',
+            // 'login'
             // 'csrf',
             // 'invalidchars',
         ],
@@ -113,5 +113,7 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+        'login' => ['before' => ['projects/*']]
+    ];
 }

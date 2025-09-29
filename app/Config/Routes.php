@@ -8,11 +8,13 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/home/about', 'Home::about');
 
-$routes->get('/projects', 'Projects::index');
-$routes->get('/projects/formadd', 'Projects::formadd');
-$routes->get('/projects/edit/(:segment)', 'Projects::edit/$1');
-$routes->get('/projects/detail/(:segment)', 'Projects::detail/$1');
-
-$routes->post('/projects/update/(:segment)', 'Projects::update/$1');
-$routes->post('/projects/save', 'Projects::save');
-$routes->post('/projects/delete/(:segment)', 'Projects::delete/$1');
+$routes->group('/projects', ['filter' => 'login'], static function($routes){
+    $routes->get('', 'Projects::index');
+    $routes->get('formadd', 'Projects::formadd');
+    $routes->get('edit/(:segment)', 'Projects::edit/$1');
+    $routes->get('detail/(:segment)', 'Projects::detail/$1');
+    
+    $routes->post('update/(:segment)', 'Projects::update/$1');
+    $routes->post('save', 'Projects::save');
+    $routes->post('delete/(:segment)', 'Projects::delete/$1');
+});

@@ -32,6 +32,7 @@ errorMessage.length ? (
 
 btnHero ? (
     btnHero.addEventListener('click', ()=> {
+        console.log('cek')
         myProjects.scrollIntoView({behavior: "smooth"})
     })
 ) : ''
