@@ -29,7 +29,7 @@
     <?php foreach($projects as $index => $p): ?>
     <tbody class="text-center">
       <!-- row 1 -->
-      <tr class="border-b border-neutral">
+      <tr class="border-b border-neutral" data-aos="fade-right">
         <th><?= $index + 1 ?>.</th>
         <td class="place-items-center"><img src="/images/uploads/<?= $p['image_url']?>" class="lg:h-30 max-sm:size-10 rounded-sm"></td>
         <td><?= $p['title']?></td>
