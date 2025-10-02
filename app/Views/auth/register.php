@@ -2,7 +2,7 @@
 <?= $this-> section('content')?>
 
 <section class="min-h-screen grid">
-    <form id="formRegister" action="<?= url_to('register') ?>" method="post" class="flex flex-col w-[40%] gap-5 bg-white drop-shadow-md place-self-center p-4">
+    <form id="formRegister" action="<?= url_to('register') ?>" method="post" class="flex flex-col w-[30%] gap-5 bg-white drop-shadow-md place-self-center p-4">
         <?=csrf_field()?>
         <p class="font-bold text-xl text-center">Form Register</p>
         <div class="input-column flex flex-col gap-3">
