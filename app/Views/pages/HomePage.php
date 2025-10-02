@@ -3,7 +3,7 @@
 <?= $this->section('content');?>
 
 <div class="flex flex-col min-h-screen mb-10 gap-5">
-    <div class="hero flex flex-col h-screen bg-neutral-700 text-white items-center justify-center gap-3 " style="background-image: url('/images/library.jpg'); opacity:95%;">
+    <div class="hero flex flex-col h-screen bg-neutral-700 text-white items-center justify-center gap-3 " style="background-image: url('<?= base_url('/images/library.jpg')?>'); opacity:95%;">
         <p class="font-bold text-3xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] text-center">Welcome to Kuchi Projects!</p>
         <p class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium illo sequi eius?</p>
         <button id="btnHero" class="btn btn-outline rounded-full drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] hover:bg-white hover:text-neutral">Lets Start!</button>
@@ -19,7 +19,7 @@
             <?php foreach ($projects as $index => $p):  ?>
                 <?php if ($index <3): ?>
                         <div data-aos="fade-up" class="flex flex-col gap-3 items-center bg-white drop-shadow-md rounded-sm p-3 w-full">
-                            <img src="/images/uploads/<?= $p['image_url']?>"alt="" class="size-45 rounded-sm w-full drop-shadow-md">
+                            <img src="<?= base_url('/images/uploads/'.$p['image_url'])?>" alt="" class="size-45 rounded-sm w-full drop-shadow-md">
                             <p class="font-bold"><?= $p['title'];?></p>
                             <a href="<?= $p['url'];?>" class="hover:text-success text-nowrap hover:underline hover:underline-offset-2"><?= $p['url'];?></a>
                             <a href="/projects/detail/<?= $p['id'];?>" class="btn btn-neutral w-full rounded-lg">Check</a>

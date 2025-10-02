@@ -9,7 +9,7 @@
             <div class="items grid lg:grid-cols-[repeat(3,_auto)] grid-cols-2 gap-3">
                 <?php foreach($tools as $key => $t): ?>
                     <div data-aos="zoom-in" class="flex flex-col hover:bg-neutral/10 hover:cursor-pointer items-center gap-2 p-4 bg-white drop-shadow-sm rounded-sm">
-                        <img src="/images/tools/<?=$t?>" alt="" class="size-15">
+                        <img src="<?=base_url('/images/tools/'.$t)?>" alt="" class="size-15">
                         <p class="text-center max-sm:text-xs"><?= $key?></p>
                     </div>
                 <?php endforeach;?>

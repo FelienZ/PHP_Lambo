@@ -5,8 +5,8 @@
     </div>
     <ul class="flex items-center gap-8 max-sm:hidden">
         <li><a href="/">Home</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/home/about">About</a></li>
+        <li><a href="<?= base_url('/projects')?>">Projects</a></li>
+        <li><a href="<?= base_url('/home/about')?>">About</a></li>
         <li class="dropdown dropdown-bottom dropdown-end">
         <div class="avatar avatar-placeholder" role="button" tabindex="0">
         <div class="bg-white text-neutral size-10 font-bold rounded-full">
@@ -28,7 +28,7 @@
     <button id="navbtn" class="btn btn-neutral border border-gray-800 hidden max-sm:flex"><i class="fa-solid fa-bars"></i></button>
     <ul id="menu" class="items-center flex-col z-10 py-5 sm:hidden bg-neutral left-0 right-0 top-20 text-white absolute gap-8 hidden">
         <li><a href="/">Home</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/home/about">About</a></li>
+        <li><a href="<?= base_url('/projects')?>">Projects</a></li>
+        <li><a href="<?= base_url('/home/about')?>">About</a></li>
     </ul>
 </nav>
